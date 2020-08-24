@@ -1,4 +1,6 @@
 import React from 'react';
+import store from '../store';
+import {addFruits} from '../actions/fruitActions';
 
 class FruitBulkAdd extends React.Component {
   constructor(props) {
@@ -21,6 +23,7 @@ class FruitBulkAdd extends React.Component {
         .map((fruitName) => fruitName.toUpperCase());
       // TODO Dispatch to the store an action to add the fruits.
       this.setState({ fruitToAdd: '' });
+      store.dispatch(addFruits(fruit))
     }
   }
 

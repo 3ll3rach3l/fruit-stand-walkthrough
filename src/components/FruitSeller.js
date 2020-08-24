@@ -11,7 +11,7 @@ class FruitSeller extends React.Component {
 
   sellOutClick = () => {
     // TODO Dispatch to the store an action to sell out.
-    store.dispatch(sellout())
+    store.dispatch(sellOut())
   }
 
   componentDidMount() {
