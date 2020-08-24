@@ -1,9 +1,12 @@
 import React from 'react';
+import store from '../store';
+import {addFruit} from '../actions/fruitActions';
 
 class FruitQuickAdd extends React.Component {
   addFruitClick = (event) => {
     const fruit = event.target.innerText;
     // TODO Dispatch to the store an action to add the fruit.
+    store.dispatch(addFruit(fruit))
   }
 
   render() {

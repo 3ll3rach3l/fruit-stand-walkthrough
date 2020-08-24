@@ -3,15 +3,19 @@ import React from 'react';
 class FruitList extends React.Component {
   componentDidMount() {
     // TODO Subscribe to the store to listen for state updates.
+    this.unsubscribe = store.subscribe(()=>{
+      this.forceUpdate()
+    })
   }
 
   componentWillUnmount() {
     // TODO Unsubscribe the listener from the store.
+    if(this.unsubscribe) this.unsubscribe()
   }
 
   render() {
     // TODO Get the fruit state from the store.
-    const fruit = [];
+    const fruit = store.getState();
 
     return (
       <div>
