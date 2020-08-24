@@ -20,13 +20,20 @@ const farmerReducer = (state, action) =>{
 }
 
 const farmersReducer = (state = {}, action) => {
+    Object.freeze(state);
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case HIRE_FARMER:
-            nextState[action.id] = farmerReducer(undefined, action);
+            const farmerToHire = {
+                id: action.id,
+                name: action.name,
+                paid: false
+            };
+            nextState[action.id] = farmerToHire;
             return nextState;
         case PAY_FARMER:
-           nextState[action.id] = farmerReducer(nextState[action.id], action)
+            const farmerToPay = nextState[action.id];
+            farmerToPay.paid = !farmerToPay.paid;
             return nextState;
         default:
             return state;
